@@ -73,3 +73,33 @@ try:
 except IOError:
     print("An error occurred while writing to the file.")
 
+"""======================================================================================="""
+# 主动触发异常-raise方法
+"""raise 主动触发内置异常"""
+# 引发内置异常并修改异常提示信息
+x = 0
+try:
+    for i in range(7):
+        if x < 5:
+            x += 1
+            print(x)
+        elif x >= 5:
+            raise ValueError('x的值大于4了')
+except ValueError as e:
+    raise ValueError("A value error happened.")
+
+
+# raise未捕获异常交由外层调用者处理
+def safe_divide(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError as e:
+        print(f"发生错误：{e}")
+        raise  # 重新抛出异常，让外层调用者处理
+
+
+# 使用函数并触发异常
+try:
+    result = safe_divide(10, 0)
+except Exception as e:
+    print(f"捕获到未知异常：{e}")
