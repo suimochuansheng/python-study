@@ -1,0 +1,2 @@
+这是一个被读取文件
+This is a read file
